@@ -1,5 +1,12 @@
 Golang Vs Odin syntax
 
+# Naming Convention
+
+ODIN use snake_case
+
+GO use camelCase
+
+
 # Package
 
 Declare the package on the top of the file same in both language 
@@ -30,7 +37,7 @@ import "core:log"
 
 
 # BASIC Type
-// In both language type have a zero value 
+Both languages have a concept of a zero value for their types
 ```
 // -------------------------
 // BOOLEAN TYPES
@@ -134,6 +141,8 @@ func main() {
 }
 
 ```
+to complete
+
 ```odin
 package main
 
@@ -156,6 +165,7 @@ main :: proc() {
 
   fmt.println(p)
 }
+// unions
 
 ```
 
@@ -173,7 +183,7 @@ const (
 
 ```odin
 Choice :: enum {
-    Choice1
+    Choice1 // start at 0 as well
     Choice2
     Choice3
 }
@@ -215,12 +225,6 @@ green := "#00FF00"
 ```
 
 
-# Naming Convention
-
-ODIN use snake_case
-
-GO use camelCase
-
 
 # Function
 
@@ -246,9 +250,6 @@ func (s *Somestruct)someMethod(x int){}
 
 In Odin function are called procedure and it is declared like so
 ```odin
-main :: proc() {
-  
-}
 // can as well have 1 or multiple return type 
 some_procedure :: proc() -> i8 {}
 
