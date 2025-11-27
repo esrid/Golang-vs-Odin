@@ -1,16 +1,28 @@
-Golang Vs Odin syntax
+# Golang Vs Odin: Syntax Comparison
 
-# Naming Convention
+A quick cheat-sheet comparing the fundamental syntax of the Go and Odin programming languages.
 
-ODIN use snake_case
+## 📜 Sommaire
 
-GO use camelCase
+* [Naming Convention](#️-naming-convention)
+* [Package](#-package)
+* [Import](#-import)
+* [Basic Types](#-basic-types)
+* [Custom Type](#️-custom-type)
+* [Enum](#-enum)
+* [Variable](#-variable)
+* [Function](#-function)
+* [If Statement](#-if-statement)
+* [Loops](#-loops)
+* [Switch](#-switch)
 
+## Naming Convention
 
-# Package
+* **Odin:** Uses `snake_case` for most identifiers.
+* **Go:** Uses `camelCase` (or `PascalCase` for exported identifiers).
 
-Declare the package on the top of the file same in both language 
-
+## Package
+Declare the package on the top of the file, same in both languages.
 ```
 package main
 ```
@@ -30,71 +42,28 @@ import (
 )
 
 Odin: 
-// Odin do not support multiple import
+// Odin does not support multiple import blocks (import (...))
 import "core:fmt"
 import "core:log"
 ```
 
 
-# BASIC Type
+## BASIC Type
 Both languages have a concept of a zero value for their types
-```
-// -------------------------
-// BOOLEAN TYPES
-// -------------------------
-Go:   bool
-Odin: bool, b8, b16, b32, b64
 
-// -------------------------
-// INTEGER TYPES
-// -------------------------
-Go Signed:      int, int8, int16, int32, int64
-Odin Signed:    i8, i16, i32, i64, i128, int   // int is pointer-sized
+| Type Category             | Go Types                                      | Odin Types                                      | Notes |
+|---------------------------|----------------------------------------------|------------------------------------------------|-------|
+| **Boolean**               | bool                                         | bool, b8, b16, b32, b64                        |       |
+| **Signed Integer**        | int, int8, int16, int32, int64              | i8, i16, i32, i64, i128, int                  | int is pointer-sized in Odin |
+| **Unsigned Integer**      | uint, uint8, uint16, uint32, uint64, uintptr, byte, rune | u8, u16, u32, u64, u128, uint, uintptr       | byte is alias for int8; rune is alias for int32 in both languages |
+| **Floating-Point**        | float32, float64                             | f16, f32, f64                                  |       |
+| **Complex**               | complex64, complex128                         | complex32, complex64, complex128              |       |
+| **Quaternion**            | none                                         | quaternion64, quaternion128, quaternion256    |       |
+| **Character / String**    | string, rune                                 | string, string16, cstring, cstring16, rune    | rune alias for int32 |
+| **Pointer / Raw Memory**  | pointers (*T)                                | rawptr                                         |       |
+| **Generic / Runtime**     | any (via interface{})                        | any, typeid                                    |       |
 
-Go Unsigned:    uint, uint8, uint16, uint32, uint64, uintptr, byte, rune
-Odin Unsigned:  u8, u16, u32, u64, u128, uint, uintptr
-
-// byte are alias for int8 in both language
-
-// -------------------------
-// FLOATING-POINT TYPES
-// -------------------------
-Go:   float32, float64
-Odin: f16, f32, f64
-
-// -------------------------
-// COMPLEX TYPES
-// -------------------------
-Go:   complex64, complex128
-Odin: complex32, complex64, complex128
-
-// -------------------------
-// QUATERNION TYPES
-// -------------------------
-Go:   none
-Odin: quaternion64, quaternion128, quaternion256
-
-// -------------------------
-// CHARACTER / STRING TYPES
-// -------------------------
-Go:   string, rune
-Odin: string, string16, cstring, cstring16, rune
-// rune are alias for int32 in both language
-
-// -------------------------
-// POINTER / RAW MEMORY
-// -------------------------
-Go:   pointers (*T)
-Odin: rawptr
-
-// -------------------------
-// GENERIC / RUNTIME TYPES
-// -------------------------
-Go:   any (via interface{})
-Odin: any, typeid
-```
-
-# Custom Type
+## Custom Type
 ```go
 package main
 
@@ -301,9 +270,8 @@ for &v,i in arr {
 }
 
 ```
-
+// to do
 # switch 
-
 
 
 
