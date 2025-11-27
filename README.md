@@ -30,6 +30,7 @@ import "core:log"
 
 
 # BASIC Type
+// In both language type have a zero value 
 ```
 // -------------------------
 // BOOLEAN TYPES
@@ -156,12 +157,27 @@ main :: proc() {
   fmt.println(p)
 }
 
-
-
 ```
 
 
 # Enum
+
+```go
+type Choice int 
+const (
+    choice1 Choice = iota // start at 0 
+    choice2 
+    choice3 
+)
+```
+
+```odin
+Choice :: enum {
+    Choice1
+    Choice2
+    Choice3
+}
+```
 
 # Variable
 
@@ -243,6 +259,9 @@ some_procedure :: proc(x : i8, y : i8) -> (i8,f32) {}
 some_procedure :: proc(x,y: i8) -> (i8,f32) {}
 
 some_procedure :: proc(x,y: i8) -> ( a i8, b f32) {}
+
+// no method in odin, there bellow is just a procedure that accept a custom type 
+some_procedure :: proc( cs : Customtype) {}
 ```
 
 
@@ -252,27 +271,39 @@ if, else statement behave the same in both language
 # Loops 
 Both language use `for` for looping with some key difference. 
 
-```
+```go
+// range 
+ODIN:
+for i in 0..<3 {
+    fmt.println(i)
+}
+
+GO:
+for i := range 3 {
+    fmt.Println(i)
+}
+
 arr := [3]int{1,2,3}
 
-// index come first
+// index come first in golang
 for i,v := range arr {
     v *= 2 // this will failed because golang provide the copy
     arr[i] *= 2 // this will succeed
 }
 
-ODIN;
+
+ODIN:
 // value come first
 for &v,i in arr {
     // to change the value we need to make v adressable 
     v^ *= 2 //deference it and change it 
 }
 
-for i in 0..<3 {
-}
-
-
 ```
+
+# switch 
+
+
 
 
 
