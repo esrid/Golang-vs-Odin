@@ -27,7 +27,7 @@ Declare the package on the top of the file, same in both languages.
 package main
 ```
 
-# Import
+## Import
 
 Both use the same keyword
 
@@ -139,7 +139,7 @@ main :: proc() {
 ```
 
 
-# Enum
+## Enum
 
 ```go
 type Choice int 
@@ -158,7 +158,7 @@ Choice :: enum {
 }
 ```
 
-# Variable
+## Variable
 
 ```go
 // untyped string
@@ -195,8 +195,7 @@ green := "#00FF00"
 
 
 
-# Function
-
+## Function / Method
 
 ```go
 func someFunction() int {}
@@ -271,7 +270,7 @@ for &v,i in arr {
 
 ```
 // to do
-# switch 
+## switch 
 
 
 
