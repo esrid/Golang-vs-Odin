@@ -117,24 +117,28 @@ package main
 
 import "core:fmt"
 	
-
+// new type
 Age :: i16
 
+// struct type
 Person :: struct {
   name : string,
   age : Age,
 }
 
-main :: proc() {
+// union type
+Custom :: union {
+u8,
+f32,
+}
 
+main :: proc() {
   p := Person {
       name = "odin",
       age = 10,
   }
-
   fmt.println(p)
 }
-// unions
 
 ```
 
@@ -142,19 +146,27 @@ main :: proc() {
 ## Enum
 
 ```go
-type Choice int 
+type OS int
+
 const (
-    choice1 Choice = iota // start at 0 
-    choice2 
-    choice3 
+	MacOs OS = iota
+	Windows
+	Linux
 )
 ```
 
 ```odin
-Choice :: enum {
-    Choice1 // start at 0 as well
-    Choice2
-    Choice3
+OS :: enum {
+	MacOs,
+	Windows,
+	Linux,
+}
+
+// you can specify the type of enum default is int
+OS :: enum i16{
+	MacOs,
+	Windows,
+	Linux,
 }
 ```
 
@@ -271,6 +283,47 @@ for &v,i in arr {
 ```
 // to do
 ## switch 
+
+```go
+	computer := MacOs
+	switch computer {
+	case MacOs:
+		fmt.Println("This is a Mac.")
+	case Windows:
+		fmt.Println("This is a Windows PC.")
+	case Linux:
+		fmt.Println("This is a Linux machine.")
+	default:
+		fmt.Println("Unknown operating system.")
+	}
+```
+
+```odin
+	computer: OS
+	switch computer {
+	case .MacOs:
+		fmt.println("This is a Mac.")
+	case .Windows:
+		fmt.println("This is a Windows PC.")
+	case .Linux:
+		fmt.println("This is a Linux machine.")
+	case:
+		fmt.println("Unknown operating system.")
+	}
+
+	// Unlike Golang, all fields must be included. 
+	// if you do not need all the fields you can use `partial` keywords
+
+#partial switch computer {
+	case .MacOs:
+		fmt.println("This is a Mac.")
+	case .Linux:
+		fmt.println("This is a Linux machine.")
+	case:
+		fmt.println("Unknown operating system.")
+	}
+	
+```
 
 
 
