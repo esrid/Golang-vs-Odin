@@ -127,9 +127,9 @@ Person :: struct {
 }
 
 // union type
-Custom :: union {
-u8,
-f32,
+Custom_Union :: union {
+    u8,
+    f32,
 }
 
 main :: proc() {
@@ -138,6 +138,34 @@ main :: proc() {
       age = 10,
   }
   fmt.println(p)
+}
+
+```
+
+## Union 
+
+```odin
+// example from odin book by karl zylinksi
+Shape :: union {
+	Shape_Circle,
+	Shape_Square,
+}
+
+Shape_Circle :: struct {
+	radius: f32,
+}
+
+Shape_Square :: struct {
+	width: f32,
+}
+
+// Zero value: nil
+shape: Shape
+
+// #no_nil tag prevent the nil
+Shape :: union #no_nil {
+	Shape_Circle,
+	Shape_Square,
 }
 
 ```
@@ -312,7 +340,7 @@ for &v,i in arr {
 	}
 
 	// Unlike Golang, all fields must be included. 
-	// if you do not need all the fields you can use `partial` keywords
+	// if you do not need all the fields you can use `partial` tag
 
 #partial switch computer {
 	case .MacOs:
@@ -322,7 +350,15 @@ for &v,i in arr {
 	case:
 		fmt.println("Unknown operating system.")
 	}
-	
+
+c : Custom_Union = u8(10)
+
+    switch v in c {
+    case u8:
+    // do something
+    case f32: 
+    // do another things
+    }
 ```
 
 
